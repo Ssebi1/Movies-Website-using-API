@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Popular Movies</title>
+    <style>
+        body {
+            background-color: rgb(44, 45, 65);
+        }
+
+        .card {
+            background-color: rgb(81, 84, 121);
+            border-color: rgb(81, 84, 121);
+            color: white;
+        }
+
+        .card-text,
+        .card-title {
+            text-align: center;
+        }
+
+        .card-text {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            top: 5px;
+            background-color: rgb(44, 45, 65);
+            padding: 3px 6px 3px 6px;
+            font-size: 13px;
+            border-radius: 10px;
+            color: rgb(235, 220, 11);
+        }
+
+        .category--title {
+            text-align: center;
+            color: white;
+            margin: 30px;
+            margin-bottom: 10px;
+        }
+
+        .category--hr {
+            background-color: white;
+            margin: 0 auto;
+        }
+
+        .pagination {
+            justify-content: center;
+            outline: none;
+        }
+
+        .page-item a {
+            color: white;
+            background-color: rgb(81, 84, 121);
+            border: 0px;
+            outline: none;
+        }
+
+        .page-item a:hover {
+            color: white;
+            background-color: rgb(110, 113, 158);
+        }
+
+        .homeButton {
+            color: white;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+
+        .homeButton:hover {
+            color: rgb(110, 113, 158);
+        }
+
+        .fa-chevron-left {
+            font-size: 20px;
+        }
+
+        .fa-chevron-left:hover {
+            color: rgb(110, 113, 158);
+        }
+    </style>
+</head>
+
+<body>
+    <a class="homeButton" href="/more/popularMovies?page=1"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+
+    <h1 class="category--title">Results for <%= search %></h1>
+    <% var resultsNumber=19; %>
+    <% if(total_results<=18) { resultsNumber = total_results-1; } %>
+    <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;">
+        <% for(var i = 0 ; i <= resultsNumber ; i ++) { %>
+        <div class="card" style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
+            <img src="<%= IMGPATH + searchMovies[i].poster_path %>" class="card-img-top" alt="...">
+            <div class=" card-body">
+                <div class="card-title"><%= searchMovies[i].original_title %></div>
+                <div class="card-text"><%= searchMovies[i].vote_average %></div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+
+
+</body>
+
+</html>

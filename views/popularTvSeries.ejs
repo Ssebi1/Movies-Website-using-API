@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Upcoming Movies</title>
+    <title>Popular Tv Series</title>
     <style>
         body {
             background-color: rgb(44, 45, 65);
@@ -83,10 +83,56 @@
         .fa-chevron-left:hover {
             color: rgb(110, 113, 158);
         }
+
+        .navbar {
+            background-color: rgb(81, 84, 121);
+        }
+
+        input,
+        button {
+            display: inline;
+        }
+
+        .searchInput {
+            outline: none;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            border-color: rgb(44, 45, 65);
+            color: white;
+            margin-top: -6px;
+        }
+
+        .btn:hover {
+            background-color: rgb(44, 45, 65);
+            border-color: rgb(44, 45, 65);
+            color: white;
+        }
+
+        .searchForm {
+            position: absolute;
+            right: 10px;
+            top: 8px;
+        }
+
+        .navbar {
+            height: 50px;
+        }
     </style>
 </head>
 
 <body>
+
+    <nav class="navbar">
+        <form class="searchForm" action="/tv/search" method="POST">
+            <input class="searchInput mr-sm-2" name="search">
+            <button class="btn" type="submit">Search</button>
+        </form>
+    </nav>
+
     <a class="homeButton" href="/"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
 
     <h1 class="category--title">Popular Tv Series</h1>
