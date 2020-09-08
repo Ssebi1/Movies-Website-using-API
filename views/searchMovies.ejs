@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Popular Movies</title>
+    <title>Movies Search</title>
     <style>
         body {
             background-color: rgb(44, 45, 65);
@@ -89,13 +89,23 @@
 <body>
     <a class="homeButton" href="/more/popularMovies?page=1"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
 
-    <h1 class="category--title">Results for <%= search %></h1>
+    <% if(total_results == 0) { %>
+    <h1 class="category--title">No movies results for <%= search %></h1>
+    <% } %>
+    <% if(total_results !== 0) { %>
+    <h1 class="category--title">Movies results for <%= search %></h1>
+    <% } %>
     <% var resultsNumber=19; %>
     <% if(total_results<=18) { resultsNumber = total_results-1; } %>
     <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;">
         <% for(var i = 0 ; i <= resultsNumber ; i ++) { %>
         <div class="card" style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
-            <img src="<%= IMGPATH + searchMovies[i].poster_path %>" class="card-img-top" alt="...">
+            <% if(searchMovies[i].poster_path != null) { %>
+            <img src="<%= IMGPATH + searchMovies[i].poster_path %>" class="card-img-top">
+            <% } %>
+            <% if(searchMovies[i].poster_path == null) { %>
+            <img src="/images/altPoster.jpg" class="card-img-top">
+            <% } %>
             <div class=" card-body">
                 <div class="card-title"><%= searchMovies[i].original_title %></div>
                 <div class="card-text"><%= searchMovies[i].vote_average %></div>

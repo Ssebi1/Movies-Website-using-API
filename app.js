@@ -41,12 +41,17 @@ app.post('/movie/search', async (req, res) => {
 	resp = await fetch(url);
 	const searchMovies = await resp.json();
 
-	res.render('searchMovies', {
-		searchMovies: searchMovies.results,
-		IMGPATH,
-		search,
-		total_results: searchMovies.total_results
-	});
+	if (search == '') {
+		res.redirect('/more/popularMovies?page=1');
+	}
+	else {
+		res.render('searchMovies', {
+			searchMovies: searchMovies.results,
+			IMGPATH,
+			search,
+			total_results: searchMovies.total_results
+		});
+	}
 });
 
 app.post('/tv/search', async (req, res) => {
@@ -55,12 +60,17 @@ app.post('/tv/search', async (req, res) => {
 	resp = await fetch(url);
 	const searchTv = await resp.json();
 
-	res.render('searchTv', {
-		searchTv: searchTv.results,
-		IMGPATH,
-		search: search.toUpperCase(),
-		total_results: searchTv.total_results
-	});
+	if (search == '') {
+		res.redirect('/more/popularTvSeries?page=1');
+	}
+	else {
+		res.render('searchTv', {
+			searchTv: searchTv.results,
+			IMGPATH,
+			search: search.toUpperCase(),
+			total_results: searchTv.total_results
+		});
+	}
 });
 
 app.use('/more', require('./routes/more'));

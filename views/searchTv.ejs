@@ -83,19 +83,74 @@
         .fa-chevron-left:hover {
             color: rgb(110, 113, 158);
         }
+
+        .navbar {
+            background-color: rgb(81, 84, 121);
+        }
+
+        input,
+        button {
+            display: inline;
+        }
+
+        .searchInput {
+            outline: none;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            border-color: rgb(44, 45, 65);
+            color: white;
+            margin-top: -6px;
+        }
+
+        .btn:hover {
+            background-color: rgb(44, 45, 65);
+            border-color: rgb(44, 45, 65);
+            color: white;
+        }
+
+        .searchForm {
+            position: absolute;
+            right: 10px;
+            top: 8px;
+        }
+
+        .navbar {
+            height: 50px;
+        }
     </style>
 </head>
 
 <body>
+    <nav class="navbar">
+        <form class="searchForm" action="/tv/search" method="POST">
+            <input class="searchInput mr-sm-2" name="search">
+            <button class="btn" type="submit">Search</button>
+        </form>
+    </nav>
+
     <a class="homeButton" href="/more/popularTvSeries?page=1"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
 
-    <h1 class="category--title">Results for <%= search %></h1>
+    <% if(total_results == 0) { %>
+    <h1 class="category--title">No tv series results for <%= search %></h1>
+    <% } %>
+    <% if(total_results !== 0) { %>
+    <h1 class="category--title">Tv series results for <%= search %></h1>
+    <% } %>
     <% var resultsNumber=19; %>
     <% if(total_results<=18) { resultsNumber = total_results-1; } %>
     <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;">
         <% for(var i = 0 ; i <= resultsNumber ; i ++) { %>
         <div class="card" style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
-            <img src="<%= IMGPATH + searchTv[i].poster_path %>" class="card-img-top" alt="...">
+            <% if(searchTv[i].poster_path != null) { %>
+            <img src="<%= IMGPATH + searchTv[i].poster_path %>" class="card-img-top">
+            <% } %>
+            <% if(searchTv[i].poster_path == null) { %>
+            <img src="/images/altPoster.jpg" class="card-img-top">
+            <% } %>
             <div class=" card-body">
                 <div class="card-title"><%= searchTv[i].original_name %></div>
                 <div class="card-text"><%= searchTv[i].vote_average %></div>
