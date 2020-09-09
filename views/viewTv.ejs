@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= tvSeries.name %></title>
+
+    <style>
+        body {
+            background-color: rgb(44, 45, 65);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        .image {
+            width: 100%;
+            min-width: 500px;
+            max-width: 500px;
+        }
+
+        .image img {
+            width: 100%;
+        }
+
+        .content {
+            width: 100%;
+            background-color: rgb(81, 84, 121);
+            height: auto;
+            color: white;
+            height: 750px;
+        }
+
+        .content h1 {
+            text-align: center;
+        }
+
+        .columns {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            margin-top: -40px;
+        }
+
+        .column1 {
+            width: 40%;
+            padding: 20px;
+        }
+
+        .column2 {
+            width: 60%;
+            padding: 20px;
+        }
+
+        .columns img {
+            height: 15px;
+            background-color: white;
+            padding: 3px;
+            border-radius: 2px;
+        }
+
+        .overview {
+            padding: 0 15px 0 15px;
+            height: 70px;
+            overflow: auto;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .container {
+                flex-wrap: wrap;
+                max-width: 400px;
+                height: auto;
+            }
+
+            .image {
+                min-width: 0;
+
+            }
+
+            .columns {
+                flex-wrap: wrap;
+                height: auto;
+            }
+
+            .content {
+                height: auto;
+            }
+
+            .overview {
+                height: auto;
+            }
+
+            .column1,
+            .column2 {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="image">
+            <% if(tvSeries.poster_path != null) { %>
+            <img src="<%= IMGPATH + tvSeries.poster_path %>">
+            <% } %>
+            <% if(tvSeries.poster_path == null) { %>
+            <img src="/images/altPoster.jpg">
+            <% } %>
+        </div>
+        <div class="content">
+            <h1><%= tvSeries.name %></h1>
+            <p class="overview"><b>Overview:</b>
+                <%= tvSeries.overview %>
+            </p>
+            <div class="columns">
+                <div class="column1">
+                    <p><b>Genres:</b>
+                        <% for(var i=0 ; i<=tvSeries.genres.length-1 ;i++) { %>
+                        <%= tvSeries.genres[i].name %>,
+                        <% } %>
+                    </p>
+                    <p><b>Number of seasons:</b>
+                        <%= tvSeries.number_of_seasons %>
+                    </p>
+                    <p><b>Number of episodes:</b>
+                        <%= tvSeries.number_of_episodes %>
+                    </p>
+                    <p><b>First air date:</b>
+                        <%= tvSeries.first_air_date %>
+                    </p>
+                    <p><b>Last episode aired:</b>
+                        Season <%= tvSeries.last_episode_to_air.season_number %>, episode
+                        <%= tvSeries.last_episode_to_air.episode_number %>
+                    </p>
+                    <p><b>Status:</b>
+                        <%= tvSeries.status %>
+                    </p>
+                    <p><b>Score:</b>
+                        <%= tvSeries.vote_average %>
+                    </p>
+                    <p><b>Vote count:</b>
+                        <%= tvSeries.vote_count %>
+                    </p>
+                    <p><b>Country:</b>
+                        <%= tvSeries.origin_country %>
+                    </p>
+                    <p><b>Language:</b>
+                        <%= tvSeries.original_language %>
+                    </p>
+                </div>
+                <div class="column2">
+                    <p><b>Created by:</b>
+                        <% for(var i=0 ; i<=tvSeries.created_by.length-1 ;i++) { %>
+                        <%= tvSeries.created_by[i].name %>,
+                        <% } %>
+                    </p>
+                    <p><b>Platform:</b>
+                        <% for(var i=0 ; i<=tvSeries.networks.length-1 ;i++) { %>
+                        <img src="<%= IMGPATH + tvSeries.networks[i].logo_path %>" alt="">
+
+                        <% } %>
+                    </p>
+                    <p><b>Seasons:</b>
+                    <ul>
+                        <% for(var i=0 ; i<=tvSeries.seasons.length-1 ;i++) { %>
+                        <li><b><%= tvSeries.seasons[i].name %></b>: <%= tvSeries.seasons[i].episode_count %> episodes,
+                            aired on
+                            <%= tvSeries.seasons[i].air_date %></li>
+                        <% } %>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

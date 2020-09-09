@@ -121,6 +121,11 @@
         .navbar {
             height: 50px;
         }
+
+        .card:hover {
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -141,10 +146,11 @@
     <h1 class="category--title">Tv series results for <%= search %></h1>
     <% } %>
     <% var resultsNumber=19; %>
-    <% if(total_results<=18) { resultsNumber = total_results-1; } %>
+    <% if(total_results<=18) { resultsNumber = total_results; } %>
     <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;">
-        <% for(var i = 0 ; i <= resultsNumber ; i ++) { %>
-        <div class="card" style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
+        <% for(var i = 0 ; i <= resultsNumber-1 ; i ++) { %>
+        <a href="/details/tvseries?id=<%= searchTv[i].id %>" target="_blank" class="card"
+            style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
             <% if(searchTv[i].poster_path != null) { %>
             <img src="<%= IMGPATH + searchTv[i].poster_path %>" class="card-img-top">
             <% } %>
@@ -155,7 +161,7 @@
                 <div class="card-title"><%= searchTv[i].original_name %></div>
                 <div class="card-text"><%= searchTv[i].vote_average %></div>
             </div>
-        </div>
+        </a>
         <% } %>
     </div>
 

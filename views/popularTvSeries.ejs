@@ -138,13 +138,14 @@
     <h1 class="category--title">Popular Tv Series</h1>
     <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;">
         <% for(var i = 0 ; i <= 19 ; i ++) { %>
-        <div class="card" style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
+        <a href="/details/tvseries?id=<%= popularTvSeries[i].id %>" target="_blank" class="card"
+            style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
             <img src="<%= IMGPATH + popularTvSeries[i].poster_path %>" class="card-img-top" alt="...">
             <div class=" card-body">
                 <div class="card-title"><%= popularTvSeries[i].original_name %></div>
                 <div class="card-text"><%= popularTvSeries[i].vote_average %></div>
             </div>
-        </div>
+        </a>
         <% } %>
     </div>
 

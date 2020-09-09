@@ -1,68 +1,69 @@
 body {
-	background-color: rgb(44, 45, 65);
+    background-color: rgb(44, 45, 65);
 }
 
 .card {
-	background-color: rgb(81, 84, 121);
-	border-color: rgb(81, 84, 121);
-	color: white;
+    background-color: rgb(81, 84, 121);
+    border-color: rgb(81, 84, 121);
+    color: white;
 }
 
 .card-text,
 .card-title {
-	text-align: center;
+    text-align: center;
 }
 
 .card-text {
-	position: absolute;
-	top: 0;
-	left: 5px;
-	top: 5px;
-	background-color: rgb(44, 45, 65);
-	padding: 3px 6px 3px 6px;
-	font-size: 13px;
-	border-radius: 10px;
-	color: rgb(235, 220, 11);
+    position: absolute;
+    top: 0;
+    left: 5px;
+    top: 5px;
+    background-color: rgb(44, 45, 65);
+    padding: 3px 6px 3px 6px;
+    font-size: 13px;
+    border-radius: 10px;
+    color: rgb(235, 220, 11);
 }
 
 .category--title {
-	text-align: center;
-	color: white;
-	margin: 30px;
-	margin-bottom: 10px;
+    text-align: center;
+    color: white;
+    margin: 30px;
+    margin-bottom: 10px;
 }
 
 .category--title a {
-	color: white;
+    color: white;
 }
 
 .category--hr {
-	background-color: white;
-	margin: 0 auto;
+    background-color: white;
+    margin: 0 auto;
 }
 
 a:hover {
-	text-decoration: none;
+    text-decoration: none;
+    color: white;
 }
 
 .container-fluid {
-	text-align: center;
+    text-align: center;
 }
 
 .more {
-	color: white;
-	width: auto;
-	padding: 5px 10px 5px 10px;
-	border-radius: 5px;
-	background-color: rgb(81, 84, 121);
-	cursor: pointer;
+    color: white;
+    width: auto;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    background-color: rgb(81, 84, 121);
+    cursor: pointer;
 }
 
 .more:hover {
-	background-color: rgb(110, 113, 158);
-	color: white;
+    background-color: rgb(110, 113, 158);
+    color: white;
 }
 
 .more a:hover {
-	color: white;
+    color: white;
 }
