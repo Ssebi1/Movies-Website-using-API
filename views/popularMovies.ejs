@@ -121,6 +121,11 @@
         .navbar {
             height: 50px;
         }
+
+        a:hover {
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -138,7 +143,8 @@
     <h1 class="category--title">Popular Movies</h1>
     <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;">
         <% for(var i = 0 ; i <= 19 ; i ++) { %>
-        <div class="card" style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
+        <a href="/details/movie?id=<%= popularMovies[i].id %>" target="_blank" class="card"
+            style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
             <% if(typeof poster_path != "null") { %>
             <img src="<%= IMGPATH + popularMovies[i].poster_path %>" class="card-img-top">
             <% } %>
@@ -149,7 +155,7 @@
                 <div class="card-title"><%= popularMovies[i].original_title %></div>
                 <div class="card-text"><%= popularMovies[i].vote_average %></div>
             </div>
-        </div>
+        </a>
         <% } %>
     </div>
 

@@ -7,6 +7,10 @@ var url, resData;
 router.get('/popularMovies', async (req, res) => {
     var page = req.query.page;
 
+    if (page >= 501) {
+        res.redirect('/more/popularMovies?page=1');
+    }
+
     url = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=${page}&api_key=${process.env.API_KEY}`;
     resData = await fetch(url);
     const popularMovies = await resData.json();
@@ -20,6 +24,10 @@ router.get('/popularMovies', async (req, res) => {
 
 router.get('/popularTvSeries', async (req, res) => {
     var page = req.query.page;
+
+    if (page >= 501) {
+        res.redirect('/more/popularTvSeries?page=1');
+    }
 
     url = `https://api.themoviedb.org/3/discover/tv?sort_by=popularity.desc&page=${page}&api_key=${process.env.API_KEY}`;
     resData = await fetch(url);

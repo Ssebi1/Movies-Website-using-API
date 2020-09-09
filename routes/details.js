@@ -22,7 +22,12 @@ router.get('/tvseries', async (req, res) => {
     resData = await fetch(url);
     const tvSeries = await resData.json();
 
+    url = `https://api.themoviedb.org/3/tv/${id}/similar?page=1&api_key=${process.env.API_KEY}`;
+    resData = await fetch(url);
+    const similarTvSeries = await resData.json();
+
     res.render('viewTv', {
+        similarTvSeries: similarTvSeries.results,
         tvSeries,
         IMGPATH,
     });
