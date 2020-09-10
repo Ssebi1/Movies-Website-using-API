@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title><%= movie.title %></title>
 
     <style>
@@ -12,22 +14,25 @@
             font-family: 'Segoe UI', sans-serif;
         }
 
-        .container {
+        .details-container {
             margin: 0 auto;
             width: 90%;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
+            margin-top: 20px;
         }
 
         .image {
-            width: 100%;
             min-width: 500px;
             max-width: 500px;
+            height: 750px;
+            overflow: hidden;
         }
 
         .image img {
             width: 100%;
+
         }
 
         .content {
@@ -38,28 +43,52 @@
             height: 750px;
         }
 
-        .content {
+        .content h1 {
             text-align: center;
-            font-size: 20px;
         }
 
+        .columns {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            margin-top: -40px;
+        }
+
+        .column1 {
+            width: 40%;
+            padding: 20px;
+        }
+
+        .column2 {
+            width: 60%;
+            padding: 20px;
+        }
+
+        .columns img {
+            height: 15px;
+            background-color: white;
+            padding: 3px;
+            border-radius: 2px;
+        }
 
         .overview {
-            padding: 0 15px 25px 15px;
-            max-height: 150px;
+            padding: 0 15px 0 15px;
+            height: 70px;
             overflow: auto;
         }
 
         @media only screen and (max-width: 1000px) {
-            .container {
+            .details-container {
                 flex-wrap: wrap;
-                max-width: 400px;
+                width: 90%;
                 height: auto;
             }
 
             .image {
-                min-width: 0;
-
+                max-width: none;
+                min-width: 10px;
+                width: 100%;
+                height: auto;
             }
 
             .columns {
@@ -80,12 +109,56 @@
                 width: 100%;
             }
         }
+
+        .card {
+            background-color: rgb(81, 84, 121);
+            border-color: rgb(81, 84, 121);
+            color: white;
+        }
+
+        .card-text,
+        .card-title {
+            text-align: center;
+        }
+
+        .card-text {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            top: 5px;
+            background-color: rgb(44, 45, 65);
+            padding: 3px 6px 3px 6px;
+            font-size: 13px;
+            border-radius: 10px;
+            color: rgb(235, 220, 11);
+        }
+
+        .category--title {
+            text-align: center;
+            color: white;
+            margin: 30px;
+            margin-bottom: 10px;
+        }
+
+        .category--title a {
+            color: white;
+        }
+
+        .category--hr {
+            background-color: white;
+            margin: 0 auto;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="details-container">
         <div class="image">
             <% if(movie.poster_path != null) { %>
             <img src="<%= IMGPATH + movie.poster_path %>">
@@ -131,6 +204,32 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <% var results = 7 %>
+    <% if(results > similarMovies.length) {results = similarMovies.length;} %>
+    <% if(results >0) { %>
+    <h1 class="category--title">Similar Movies</h1>
+    <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;width: 90%;">
+        <% for(var i = 0 ; i <= results ; i ++) { %>
+        <a href="/details/movie?id=<%= similarMovies[i].id %>" class="card"
+            style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
+            <% if(similarMovies[i].poster_path != null) { %>
+            <img src="https://image.tmdb.org/t/p/original<%= similarMovies[i].poster_path %>" class="card-img-top"
+                alt="..." style="width:190px;height:auto;">
+            <% } %>
+            <% if(similarMovies[i].poster_path == null) { %>
+            <img src="/images/altPoster.jpg" class="card-img-top" alt="..." style="width:190px;height:auto;">
+            <% } %>
+
+            <div class=" card-body">
+                <div class="card-title"><%= similarMovies[i].title %></div>
+                <div class="card-text"><%= similarMovies[i].vote_average %></div>
+            </div>
+        </a>
+        <% } %>
+    </div>
+    <% } %>
 
 </body>
 

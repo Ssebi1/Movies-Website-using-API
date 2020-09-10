@@ -10,7 +10,12 @@ router.get('/movie', async (req, res) => {
     resData = await fetch(url);
     const movie = await resData.json();
 
+    url = `https://api.themoviedb.org/3/movie/${id}/similar?page=1&api_key=${process.env.API_KEY}`;
+    resData = await fetch(url);
+    const similarMovies = await resData.json();
+
     res.render('viewMovie', {
+        similarMovies: similarMovies.results,
         movie,
         IMGPATH,
     });

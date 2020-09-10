@@ -67,3 +67,14 @@ a:hover {
 .more a:hover {
     color: white;
 }
+
+.footer {
+    width: 100%;
+    height: auto;
+    background-color: rgb(81, 84, 121);
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+    padding: 5px;
+    font-size: 13px;
+}

@@ -32,7 +32,6 @@
 
         .image img {
             width: 100%;
-
         }
 
         .content {
@@ -78,14 +77,20 @@
         }
 
         @media only screen and (max-width: 1000px) {
-            .container {
+            .details-container {
                 flex-wrap: wrap;
-                max-width: 400px;
+                flex-grow: inherit;
+                width: 90%;
                 height: auto;
+                justify-content: center;
+                align-items: center;
             }
 
             .image {
-                min-width: 0;
+                max-width: none;
+                min-width: 10px;
+                width: 100%;
+                height: auto;
             }
 
             .columns {
