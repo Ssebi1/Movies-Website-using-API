@@ -17,6 +17,16 @@
             background-color: rgb(81, 84, 121);
             border-color: rgb(81, 84, 121);
             color: white;
+            width: 12rem;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        @media only screen and (max-width: 400px) {
+            .card {
+                width: 90%;
+            }
         }
 
         .card-text,
@@ -149,8 +159,7 @@
     <% if(total_results<=18) { resultsNumber = total_results; } %>
     <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;">
         <% for(var i = 0 ; i <= resultsNumber-1 ; i ++) { %>
-        <a href="/details/tvseries?id=<%= searchTv[i].id %>" target="_blank" class="card"
-            style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
+        <a href="/details/tvseries?id=<%= searchTv[i].id %>" target="_blank" class="card">
             <% if(searchTv[i].poster_path != null) { %>
             <img src="<%= IMGPATH + searchTv[i].poster_path %>" class="card-img-top">
             <% } %>

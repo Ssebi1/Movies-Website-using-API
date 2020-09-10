@@ -114,6 +114,16 @@
             background-color: rgb(81, 84, 121);
             border-color: rgb(81, 84, 121);
             color: white;
+            width: 12rem;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        @media only screen and (max-width: 400px) {
+            .card {
+                width: 90%;
+            }
         }
 
         .card-text,
@@ -212,14 +222,13 @@
     <h1 class="category--title">Similar Movies</h1>
     <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;width: 90%;">
         <% for(var i = 0 ; i <= results ; i ++) { %>
-        <a href="/details/movie?id=<%= similarMovies[i].id %>" class="card"
-            style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
+        <a href="/details/movie?id=<%= similarMovies[i].id %>" class="card">
             <% if(similarMovies[i].poster_path != null) { %>
             <img src="https://image.tmdb.org/t/p/original<%= similarMovies[i].poster_path %>" class="card-img-top"
-                alt="..." style="width:190px;height:auto;">
+                alt="...">
             <% } %>
             <% if(similarMovies[i].poster_path == null) { %>
-            <img src="/images/altPoster.jpg" class="card-img-top" alt="..." style="width:190px;height:auto;">
+            <img src="/images/altPoster.jpg" class="card-img-top" alt="..." style="width:100%;height:auto;">
             <% } %>
 
             <div class=" card-body">
