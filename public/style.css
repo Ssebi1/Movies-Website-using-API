@@ -6,6 +6,10 @@ body {
     background-color: rgb(81, 84, 121);
     border-color: rgb(81, 84, 121);
     color: white;
+    width: 190px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .card-text,
@@ -77,4 +81,10 @@ a:hover {
     color: white;
     padding: 5px;
     font-size: 13px;
+}
+
+@media only screen and (max-width: 400px) {
+    .card {
+        width: 90%;
+    }
 }

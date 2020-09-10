@@ -18,8 +18,7 @@
     <h1 class="category--title"><a href="/more/popularMovies?page=1">Popular Movies</a></h1>
     <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;">
         <% for(var i = 0 ; i <= 13 ; i ++) { %>
-        <a href="/details/movie?id=<%= popularMovies[i].id %>" target="_blank" class="card"
-            style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
+        <a href="/details/movie?id=<%= popularMovies[i].id %>" target="_blank" class="card">
             <img src="<%= IMGPATH + popularMovies[i].poster_path %>" class="card-img-top" alt="...">
             <div class=" card-body">
                 <div class="card-title"><%= popularMovies[i].title %></div>
@@ -36,8 +35,7 @@
     <h1 class="category--title"><a href="/more/popularTvSeries?page=1">Popular Tv Series</a></h1>
     <div class="container-fluid" style="display: flex;flex-direction: row;flex-wrap:wrap;">
         <% for(var i = 0 ; i <= 13 ; i ++) { %>
-        <a href="/details/tvseries?id=<%= popularTvSeries[i].id %>" target="_blank" class="card"
-            style="width: 12rem;margin:0 auto;margin-bottom:20px;margin-top:20px;">
+        <a href="/details/tvseries?id=<%= popularTvSeries[i].id %>" target="_blank" class="card">
             <img src="<%= IMGPATH + popularTvSeries[i].poster_path %>" class="card-img-top" alt="...">
             <div class=" card-body">
                 <div class="card-title"><%= popularTvSeries[i].name %></div>
